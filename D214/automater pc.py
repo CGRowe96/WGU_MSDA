@@ -32,10 +32,11 @@ def autodownloader(num,query):
         pag.click(300,30,button='middle')
         pag.moveTo(80,275)
         pag.scroll(random.randint(-245,-215))
+        time.sleep(1)
         i += 1
     
     time.sleep(5)
     pag.click(110, 125, clicks=3)
     pag.typewrite(['backspace'])
 
-autodownloader(2,'Hospitals in West Virginia')
+autodownloader(50,'medical center in West Virginia')

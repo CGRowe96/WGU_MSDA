@@ -27,6 +27,7 @@ def autodownloader(num,query):
         pag.click(80,155)
         pag.moveTo(110,350)
         pag.scroll(random.randint(-245,-215))
+        time.sleep(1)
         i += 1
     
     time.sleep(5)
