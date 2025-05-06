@@ -1,5 +1,6 @@
 import pyautogui as pag
 import time
+import random
 
 print(pag.size())
 
@@ -16,14 +17,16 @@ def autodownloader(num,query):
         pag.click(110,350)
         time.sleep(1)
         pag.click(770,475)
-        time.sleep(70)
+        time.sleep(65)
         pag.click(300,200)
+        time.sleep(1)
+        pag.click(300,245)
         time.sleep(1)
         pag.click(400,30,button='middle')
         pag.click(75,30)
         pag.click(80,155)
         pag.moveTo(110,350)
-        pag.scroll(-215)
+        pag.scroll(random.randint(-245,-215))
         i += 1
     
     time.sleep(5)
