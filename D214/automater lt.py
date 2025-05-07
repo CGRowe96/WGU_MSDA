@@ -5,8 +5,10 @@ import random
 print(pag.size())
 
 def autodownloader(num,query):
+    time.sleep(1)
     pag.moveTo(110, 155, duration=.2)
     pag.click(110, 155)
+    time.sleep(1)
     pag.typewrite(f'{query}')
     pag.typewrite(['enter'])
     pag.moveTo(110, 350, duration=.2)
