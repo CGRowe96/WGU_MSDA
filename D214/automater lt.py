@@ -198,12 +198,6 @@ def autodownloader(num,query):
     time.sleep(2)
     pag.click(85,30,button='middle')
 
-autodownloader(40,'Medical Facilities in Colorado')
-autodownloader(50,'Medical Facilities in Wyoming')
-autodownloader(50,'Medical Facilities in Montana')
-autodownloader(50,'Medical Facilities in Idaho')
-autodownloader(50,'Medical Facilities in Utah')
-autodownloader(50,'Medical Facilities in Arizona')
 autodownloader(50,'Medical Facilities in Washington')
 autodownloader(50,'Medical Facilities in Oregon')
 autodownloader(50,'Medical Facilities in Nevada')
