@@ -7,18 +7,21 @@ import random
 
 #def iteration_test(num):
     #i = 0
+    
     #while i < num:
+        #iteration = (i/num) *100
         #print(f'Iteration number: {i}')
+        #if i < num:
+            #print(f'You are {iteration}% done. Iteration number: {i} starting now.')
+        #if i == (num/2):
+            #print("Hello World!")
+        #if i >= num:
+            #print(f'You are {iteration}% done.')
         #time.sleep(2)
         #print(random.randint(0,255))
         #time.sleep(2)
         #i += 1
-        #iteration = (i/num) *100
-        #if i < num:
-            #print(f'You are {iteration}% done. Iteration number: {i} starting now.')
-        #elif i >= num:
-            #print(f'You are {iteration}% done.')
-            
+        
 #iteration_test(6)
 
 def autodownloader(num,query):
@@ -32,7 +35,33 @@ def autodownloader(num,query):
     
     i = 0
     while i < num:
+        iteration = (i/num) *100
         print(f'Iteration number: {i}')
+        if i < num:
+            print(f'You are {iteration}% done. Iteration number: {i} starting now.')
+        if i == (num/2):
+            pag.click(925,30)
+            time.sleep(2)
+            pag.click(880,1050)
+            time.sleep(2)
+            pag.click(815,75)
+            time.sleep(2)
+            pag.click(550,325)
+            time.sleep(2)
+            pag.click(550,200)
+            time.sleep(2)
+            pag.click(85,30,button='middle')
+            time.sleep(2)
+            pag.moveTo(110, 155, duration=.2)
+            pag.click(110, 155)
+            time.sleep(2)
+            pag.typewrite(f'{query}')
+            pag.typewrite(['enter'])
+            pag.moveTo(110, 350, duration=.2)
+            time.sleep(2)
+            pag.scroll(random.randint(-600,-550))
+        if i >= num:
+            print(f'You are {iteration}% done.')
         time.sleep(2)
         pag.click(110,350)
         time.sleep(2)
@@ -53,11 +82,6 @@ def autodownloader(num,query):
         pag.scroll(random.randint(-245,-215))
         time.sleep(2)
         i += 1
-        iteration = (i/num) *100
-        if i < num:
-            print(f'You are {iteration}% done. Iteration number: {i} starting now.')
-        elif i >= num:
-            print(f'You are {iteration}% done.')
     
     time.sleep(5)
     pag.click(110, 155, clicks=3)
@@ -74,4 +98,4 @@ def autodownloader(num,query):
     time.sleep(2)
     pag.click(85,30,button='middle')
 
-autodownloader(1,'mental health')
+autodownloader(2,'restaurants')
