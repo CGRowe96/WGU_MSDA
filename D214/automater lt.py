@@ -197,3 +197,15 @@ def autodownloader(num,query):
     pag.click(550,200)
     time.sleep(2)
     pag.click(85,30,button='middle')
+
+def renamer(num):
+    i = 0
+    pag.click(200,160)
+    while i < num:
+        name = i + 1
+        pag.typewrite(['F2'])
+        pag.typewrite(str(name))
+        pag.typewrite(['enter'])
+        time.sleep(1)
+        pag.typewrite(['down'])
+        i += 1

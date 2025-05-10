@@ -26,7 +26,7 @@ import random
 
 def renamer(num):
     i = 0
-    pag.click(250,175)
+    pag.click(220,180)
     while i < num:
         name = i + 1
         pag.typewrite(['F2'])
@@ -36,4 +36,3 @@ def renamer(num):
         pag.typewrite(['down'])
         i += 1
 
-renamer(6)
