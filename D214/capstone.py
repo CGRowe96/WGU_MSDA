@@ -79,3 +79,5 @@ df['census region'] = np.where((df['state'] == 'Maine')|(df['state'] == 'New Ham
                               (df['state'] == 'Oregon')|(df['state'] == 'California')|(df['state'] == 'Alaska')|(df['state'] == 'Hawaii'),'west','?'))))
 
 print(df['census region'].value_counts())
+
+df.to_csv("cleaned_full_df_with_census_regions.csv")
