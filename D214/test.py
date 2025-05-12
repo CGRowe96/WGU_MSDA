@@ -36,3 +36,5 @@ def renamer(num):
         pag.typewrite(['down'])
         i += 1
 
+pag.moveTo(110,125)
+pag.moveTo(80,275)
