@@ -41,3 +41,9 @@ print(num_missing_replies)
 
 num_missing_vals = df.isna().sum()
 print(num_missing_vals)
+
+df.to_csv("cleaned_full_df.csv")
+
+df = pd.read_csv("cleaned_full_df.csv")
+
+print(df.dtypes)
