@@ -80,9 +80,10 @@ df['census region'] = np.where((df['state'] == 'Maine')|(df['state'] == 'New Ham
 
 print(df['census region'].value_counts())
 
-df.to_csv("cleaned_full_df_with_census_regions.csv")
-
 df = df.drop(columns='Unnamed: 0')
+df = df.drop(columns='Unnamed: 0.1')
+
+df.to_csv("cleaned_full_df_with_census_regions.csv")
 
 def census_review_counts(region):
     count1 = df[(df['census region'] == region) & (df['label'] == 'positive')]
@@ -147,3 +148,4 @@ observed = np.array([
 
 chi2, p_value, degrees_of_freedom, expected_values = stats.chi2_contingency(observed)
 print(p_value)
+
