@@ -81,3 +81,69 @@ df['census region'] = np.where((df['state'] == 'Maine')|(df['state'] == 'New Ham
 print(df['census region'].value_counts())
 
 df.to_csv("cleaned_full_df_with_census_regions.csv")
+
+df = df.drop(columns='Unnamed: 0')
+
+def census_review_counts(region):
+    count1 = df[(df['census region'] == region) & (df['label'] == 'positive')]
+    count2 = df[(df['census region'] == region) & (df['label'] == 'negative')]
+    count3 = df[(df['census region'] == region) & (df['label'] == 'neutral')]
+    print(count1['label'].value_counts())
+    print(count2['label'].value_counts())
+    print(count3['label'].value_counts())
+
+census_review_counts('southern') # 48175 pos | 33697 neg | 2665 neutral | 84537 total
+census_review_counts('northeast') # 19542 pos | 19341 neg | 1229 neutral | 40112 total
+census_review_counts('midwest') # 24151 pos | 17219 neg | 1214 neutral | 42584 total
+census_review_counts('west') # 24405 pos | 15517 neg | 1276 neutral | 41198 total
+
+import scipy.stats as stats
+alpha = 0.05
+
+observed = np.array([
+    [48175, 33697, 2665],
+    [19542, 19341, 1229]
+])
+
+chi2, p_value, degrees_of_freedom, expected_values = stats.chi2_contingency(observed)
+print(p_value)
+
+observed = np.array([
+    [48175, 33697, 2665],
+    [24151, 17219, 1214]
+])
+
+chi2, p_value, degrees_of_freedom, expected_values = stats.chi2_contingency(observed)
+print(p_value)
+
+observed = np.array([
+    [48175, 33697, 2665],
+    [24405, 15517, 1276]
+])
+
+chi2, p_value, degrees_of_freedom, expected_values = stats.chi2_contingency(observed)
+print(p_value)
+
+observed = np.array([
+    [19542, 19341, 1229],
+    [24151, 17219, 1214]
+])
+
+chi2, p_value, degrees_of_freedom, expected_values = stats.chi2_contingency(observed)
+print(p_value)
+
+observed = np.array([
+    [19542, 19341, 1229],
+    [24405, 15517, 1276]
+])
+
+chi2, p_value, degrees_of_freedom, expected_values = stats.chi2_contingency(observed)
+print(p_value)
+
+observed = np.array([
+    [24151, 17219, 1214],
+    [24405, 15517, 1276]
+])
+
+chi2, p_value, degrees_of_freedom, expected_values = stats.chi2_contingency(observed)
+print(p_value)
