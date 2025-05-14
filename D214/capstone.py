@@ -103,49 +103,8 @@ alpha = 0.05
 
 observed = np.array([
     [48175, 33697, 2665],
-    [19542, 19341, 1229]
-])
-
-chi2, p_value, degrees_of_freedom, expected_values = stats.chi2_contingency(observed)
-print(p_value)
-
-observed = np.array([
-    [48175, 33697, 2665],
-    [24151, 17219, 1214]
-])
-
-chi2, p_value, degrees_of_freedom, expected_values = stats.chi2_contingency(observed)
-print(p_value)
-
-observed = np.array([
-    [48175, 33697, 2665],
     [24405, 15517, 1276]
 ])
 
 chi2, p_value, degrees_of_freedom, expected_values = stats.chi2_contingency(observed)
-print(p_value)
-
-observed = np.array([
-    [19542, 19341, 1229],
-    [24151, 17219, 1214]
-])
-
-chi2, p_value, degrees_of_freedom, expected_values = stats.chi2_contingency(observed)
-print(p_value)
-
-observed = np.array([
-    [19542, 19341, 1229],
-    [24405, 15517, 1276]
-])
-
-chi2, p_value, degrees_of_freedom, expected_values = stats.chi2_contingency(observed)
-print(p_value)
-
-observed = np.array([
-    [24151, 17219, 1214],
-    [24405, 15517, 1276]
-])
-
-chi2, p_value, degrees_of_freedom, expected_values = stats.chi2_contingency(observed)
-print(p_value)
-
+print(expected_values)
