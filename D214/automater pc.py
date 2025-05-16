@@ -217,3 +217,28 @@ def concat_auto(num):
             pag.typewrite(['enter'])
         if i == 1440:
             pag.typewrite(['enter'])
+
+def concat_auto_2(num):
+    i = 1521
+    pag.click(300,155)
+    while i < num:
+        name = i + 1
+        pag.typewrite(f'df{name}, ')
+        i += 1
+        if i == 1540:
+            pag.typewrite(['enter'])
+        if i == 1560:
+            pag.typewrite(['enter'])
+        if i == 1580:
+            pag.typewrite(['enter'])
+
+def df_creation2(num):
+    i = 1521
+    pag.click(300,155)
+    while i < num:
+        name = i + 1
+        pag.typewrite(f'df{name} = pd.read_csv("{name}.csv")')
+        pag.typewrite(['enter'])
+        i += 1
+
+concat_auto_2(1591)
