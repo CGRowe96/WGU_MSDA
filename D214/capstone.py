@@ -3,15 +3,15 @@ import pandas as pd
 
 directory = os.chdir("G:\My Drive\Capstone Files\Datasets")
 
-#load and print csv index
+#------------------------------------Load and Print CSV Index----------------------------------------------#
 df = pd.read_csv("full.csv")
 print(df.columns)
 
-#drop unneccesary features
+#------------------------------------Drop Unnecessary Features-----------------------------------#
 df = df.drop(columns=["spill1","spill2","spill3","spill4","spill5","spill7","spill7.1","spill8"])
 print(df.columns)
 
-#data cleaning
+#------------------------------------Data Cleaning----------------------------------------#
 num_missing_vals = df.isna().sum()
 print(num_missing_vals)
 
@@ -52,14 +52,14 @@ df['has owner answer'] = np.where(df["Owner Answer"] != "no answer", 1, 0)
 
 print(df['has owner answer'])
 
-#cleaning second df
+#-----------------------Cleaning Second DataFrame------------------------------#
 df2 = pd.read_csv("new_data.csv")
 
-#drop unneccesary features
+#-----------------------Drop Unnecessary Features------------------------------#
 df2 = df2.drop(columns=["spill1","spill2","spill3","spill4","spill5","spill6","spill7"])
 print(df2.columns)
 
-#data cleaning
+#-----------------------Data Cleaning------------------------------#
 num_missing_vals = df2.isna().sum()
 print(num_missing_vals)
 
@@ -116,6 +116,8 @@ print(df['state'].value_counts())
 print(df2['state'].unique())
 print(df2['state'].value_counts())
 
+#-----------------------------------------Concat, Drop, Clean, Create New Features------------------------------------------------------#
+
 df = pd.concat([df,df2],ignore_index=True)
 
 df['census region'] = np.where((df['state'] == 'Maine')|(df['state'] == 'New Hampshire')|(df['state'] == 'Vermont')|(df['state'] == 'Massachusetts')|
@@ -151,6 +153,8 @@ dupe_detection('Review Text','Author Profile')
 
 df.to_csv("cleaned_full_df_with_census_regions.csv")
 
+#--------------------------------------------Pyplot Value Counts, Chi Square Test----------------------------------------------------------#
+
 x = df['label']
 plt.hist(x)
 plt.xlabel('label')
@@ -180,3 +184,6 @@ observed = np.array([
 chi2, p_value, degrees_of_freedom, expected_values = stats.chi2_contingency(observed)
 print(expected_values)
 print(p_value)
+
+#--------------------------------------------Review Text Exploration---------------------------------------------------------------#
+
