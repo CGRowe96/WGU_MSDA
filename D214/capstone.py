@@ -185,16 +185,16 @@ chi2, p_value, degrees_of_freedom, expected_values = stats.chi2_contingency(obse
 print(expected_values)
 print(p_value) #Seems that there is significance on amount of reviews... how about owner answers vs label
 
-def answer_review_counts(has_answer):
-    count1 = df[(df['has owner answer'] == has_answer) & (df['label'] == 'positive')]
-    count2 = df[(df['has owner answer'] == has_answer) & (df['label'] == 'negative')]
-    count3 = df[(df['has owner answer'] == has_answer) & (df['label'] == 'neutral')]
+def answer_review_census_counts(region, has_answer):
+    count1 = df[(df['has owner answer'] == has_answer) & (df['label'] == 'positive') & (df['census region'] == region)]
+    count2 = df[(df['has owner answer'] == has_answer) & (df['label'] == 'negative') & (df['census region'] == region)]
+    count3 = df[(df['has owner answer'] == has_answer) & (df['label'] == 'neutral') & (df['census region'] == region)]
     print(count1['label'].value_counts())
     print(count2['label'].value_counts())
     print(count3['label'].value_counts())
 
-answer_review_counts('0')
-answer_review_counts('1')
+answer_review_census_counts('0')
+answer_review_census_counts('1')
 
 #--------------------------------------------Review Text Exploration---------------------------------------------------------------#
 import demoji
