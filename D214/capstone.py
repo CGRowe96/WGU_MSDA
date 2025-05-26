@@ -99,8 +99,8 @@ print(df.dtypes)
 print(df2.dtypes)
 
 import numpy as np
-df['has owner answer'] = np.where(df["Owner Answer"] != "no answer", 1, 0)
-df2['has owner answer'] = np.where(df2["Owner Answer"] != "no answer", 1, 0)
+df['has owner answer'] = np.where(df["Owner Answer"] != "no answer", '1', '0')
+df2['has owner answer'] = np.where(df2["Owner Answer"] != "no answer", '1', '0')
 
 print(df['has owner answer'])
 print(df2['has owner answer'])
@@ -183,7 +183,46 @@ observed = np.array([
 
 chi2, p_value, degrees_of_freedom, expected_values = stats.chi2_contingency(observed)
 print(expected_values)
-print(p_value)
+print(p_value) #Seems that there is significance on amount of reviews... how about owner answers vs label
+
+def answer_review_counts(has_answer):
+    count1 = df[(df['has owner answer'] == has_answer) & (df['label'] == 'positive')]
+    count2 = df[(df['has owner answer'] == has_answer) & (df['label'] == 'negative')]
+    count3 = df[(df['has owner answer'] == has_answer) & (df['label'] == 'neutral')]
+    print(count1['label'].value_counts())
+    print(count2['label'].value_counts())
+    print(count3['label'].value_counts())
+
+answer_review_counts('0')
+answer_review_counts('1')
 
 #--------------------------------------------Review Text Exploration---------------------------------------------------------------#
+import demoji
+import re
 
+def remove_emoji(string):
+    return demoji.replace(string, '')
+
+def remove_extra_spaces(string):
+    return re.sub(r'\s{2,}',' ',str(string))
+
+df['cleaned text'] = df['Review Text'].apply(remove_emoji)
+df['cleaned text'] = df['cleaned text'].apply(remove_extra_spaces)
+
+def isEnglish(c):
+    try:
+        c.encode(encoding='utf-8').decode('ascii')
+    except UnicodeDecodeError:
+        return False
+    else:
+        return True
+
+non_english = []
+for index, row in df.iterrows():
+    for l in list(row['cleaned text']):
+        for c in l:
+            if isEnglish(c) == True:
+                pass
+            else:
+                non_english.append(c)
+print(non_english[:10])
