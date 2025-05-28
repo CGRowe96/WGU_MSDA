@@ -9602,7 +9602,10 @@ Maximum number of words: 41
 <li>Number of nodes per layer: There does not seem to be an industry standard for this hyperparameter. As such, I referred to Jason Brownlee who suggests analysts use "systemic experimentation".</li>
 <li>Loss function: Binary crossentropy was used because this is a binary classification.</li>
 <li>Optimizer: The optimizer used for this model is Adam (Adaptive Moment Estimation). Adam is a highly effective optimizer that is both memory-efficient and adaptive for each parameter.</li>
-</ul></div>
+<li>Stopping criteria: I decided to make the stopping criteria based on the validation accuracy to be sure that the resulting model matches the validation set as accurately as possible. I decided on a patience of 3 so that it would stop 3 epochs after the highest accuracy is found.</li>
+<li>Evaluation metric: The evaluation metric I chose is accuracy. This is because I want to see how accurately the model can predict values on the test set.</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
